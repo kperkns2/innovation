@@ -1,5 +1,5 @@
 
 import streamlit as st
-st.write('Hello World!!')
-st.write('My first update')
-st.write('My second update')
+st.sidebar.write('Hello World!!')
+st.sidebar.write('My first update')
+st.sidebar.write('My second update')

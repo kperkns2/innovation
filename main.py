@@ -2,7 +2,7 @@ import streamlit as st
 st.write("Hello World!")
 
 import numpy as np
-from PIL import Image
+#from PIL import Image
 from matplotlib import pyplot as plt
   
 st.sidebar.write("Adjust image size here:")

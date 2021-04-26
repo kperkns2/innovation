@@ -2,12 +2,12 @@ import streamlit as st
 st.write("Hello World!")
 
 st.sidebar.write("Adjust image size here:")
-img_size = st.slider('Slide me', min_value=5, max_value=25, step=1)
+img_size = st.sidebar.slider('Slide me', min_value=5, max_value=25, step=1)
 
 
-#import numpy as np
-#from PIL import Image
-#from matplotlib import pyplot as plt
+import numpy as np
+from PIL import Image
+from matplotlib import pyplot as plt
   
 
 

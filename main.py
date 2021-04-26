@@ -8,7 +8,7 @@ img_size = st.sidebar.slider('Image Size', min_value=5, max_value=25, step=1)
 import numpy as np
 from PIL import Image
 from matplotlib import pyplot as plt
-  
+from bs4 import BeautifulSoup
 
 #"""Add this in your streamlit app.py"""
 GA_JS = """Here is some JavaScript"""

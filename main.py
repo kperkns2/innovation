@@ -10,7 +10,7 @@ from PIL import Image
 from matplotlib import pyplot as plt
   
 
-"""Add this in your streamlit app.py"""
+#"""Add this in your streamlit app.py"""
 GA_JS = """Here is some JavaScript"""
 
 # Insert the script in the head tag of the static template inside your virtual environement

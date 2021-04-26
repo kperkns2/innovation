@@ -15,7 +15,7 @@ import pathlib
 GA_JS = """Here is some JavaScript"""
 
 # Insert the script in the head tag of the static template inside your virtual environement
-index_path = pathlib.Path(np.__file__).parent / "static" / "index.html"
+index_path = pathlib.Path(st.__file__).parent / "static" / "index.html"
 
 st.write(str(index_path))
 #soup = BeautifulSoup(index_path.read_text(), features="lxml")

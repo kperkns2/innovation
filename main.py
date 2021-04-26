@@ -11,19 +11,28 @@ from matplotlib import pyplot as plt
 from bs4 import BeautifulSoup
 import pathlib
 
-#"""Add this in your streamlit app.py"""
-GA_JS = """alert("Hello! I am an alert box!!");"""
+# #"""Add this in your streamlit app.py"""
+# GA_JS = """alert("Hello! I am an alert box!!");"""
 
-# Insert the script in the head tag of the static template inside your virtual environement
-index_path = pathlib.Path(st.__file__).parent / "static" / "index.html"
+# # Insert the script in the head tag of the static template inside your virtual environement
+# index_path = pathlib.Path(st.__file__).parent / "static" / "index.html"
 
 
-soup = BeautifulSoup(index_path.read_text(), features="lxml")
-if not soup.find(id='custom-js'):
-    script_tag = soup.new_tag("script", id='custom-js')
-    script_tag.string = GA_JS
-    soup.head.append(script_tag)
-    index_path.write_text(str(soup))
+# soup = BeautifulSoup(index_path.read_text(), features="lxml")
+# if not soup.find(id='custom-js'):
+#     script_tag = soup.new_tag("script", id='custom-js')
+#     script_tag.string = GA_JS
+#     soup.head.append(script_tag)
+#     index_path.write_text(str(soup))
+
+
+import streamlit.components.v1 as components
+
+components.html("""
+<script>
+    alert("Hello! I am an alert box!!");
+</script>
+""")
 
 
 

@@ -2,3 +2,4 @@ numpy==1.19.5
 Pillow==7.1.2
 matplotlib==3.2.2
 bs4==0.0.1
+pathlib==1.0.1

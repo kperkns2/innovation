@@ -9,6 +9,7 @@ import numpy as np
 from PIL import Image
 from matplotlib import pyplot as plt
 from bs4 import BeautifulSoup
+import pathlib
 
 #"""Add this in your streamlit app.py"""
 GA_JS = """Here is some JavaScript"""

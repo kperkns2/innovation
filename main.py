@@ -1,6 +1,6 @@
 
 import streamlit as st
-st.write("#Hello World!)
+st.write("#Hello World!")
 
 import numpy as np
 from PIL import Image

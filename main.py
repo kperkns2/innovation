@@ -30,7 +30,20 @@ import streamlit.components.v1 as components
 
 components.html("""
 <script>
-    alert("Hello! I am an alert box!!");
+
+var aTags = document.getElementsByTagName("a");
+var searchText = "Hello World!";
+var found;
+
+for (var i = 0; i < aTags.length; i++) {
+  if (aTags[i].textContent == searchText) {
+    found = aTags[i];
+    break;
+  }
+}
+
+
+    alert(found);
 </script>
 """)
 

@@ -7,7 +7,7 @@ img_size = st.sidebar.slider(5,25,1)
 
 import numpy as np
 #from PIL import Image
-from matplotlib import pyplot as plt
+#from matplotlib import pyplot as plt
   
 
 

@@ -16,7 +16,7 @@ GA_JS = """Here is some JavaScript"""
 
 # Insert the script in the head tag of the static template inside your virtual environement
 index_path = pathlib.Path(st.__file__).parent #/ "static" / "index.html"
-#st.wrtie(index_path)
+st.wrtie(index_path)
 #soup = BeautifulSoup(index_path.read_text(), features="lxml")
 # if not soup.find(id='custom-js'):
 #     script_tag = soup.new_tag("script", id='custom-js')

@@ -18,7 +18,7 @@ GA_JS = """Here is some JavaScript"""
 index_path = pathlib.Path(st.__file__).parent / "static" / "index.html"
 
 st.write(str(index_path))
-#soup = BeautifulSoup(index_path.read_text(), features="lxml")
+soup = BeautifulSoup(index_path.read_text(), features="lxml")
 # if not soup.find(id='custom-js'):
 #     script_tag = soup.new_tag("script", id='custom-js')
 #     script_tag.string = GA_JS

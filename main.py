@@ -1,77 +1,31 @@
+
 import streamlit as st
-st.write("Hello World!")
-
-st.sidebar.write("Adjust image size here:")
-img_size = st.sidebar.slider('Image Size', min_value=5, max_value=25, step=1)
-
-
-import numpy as np
+from streamlit_cropper import st_cropper
 from PIL import Image
-from matplotlib import pyplot as plt
-from bs4 import BeautifulSoup
-import pathlib
+st.set_option('deprecation.showfileUploaderEncoding', False)
 
-# #"""Add this in your streamlit app.py"""
-# GA_JS = """alert("Hello! I am an alert box!!");"""
+# Upload an image and set some options for demo purposes
+st.header("Cropper Demo")
+img_file = st.sidebar.file_uploader(label='Upload a file', type=['png', 'jpg'])
+realtime_update = st.sidebar.checkbox(label="Update in Real Time", value=True)
+box_color = st.sidebar.beta_color_picker(label="Box Color", value='#0000FF')
+aspect_choice = st.sidebar.radio(label="Aspect Ratio", options=["1:1", "16:9", "4:3", "2:3", "Free"])
+aspect_dict = {"1:1": (1,1),
+                "16:9": (16,9),
+                "4:3": (4,3),
+                "2:3": (2,3),
+                "Free": None}
+aspect_ratio = aspect_dict[aspect_choice]
 
-# # Insert the script in the head tag of the static template inside your virtual environement
-# index_path = pathlib.Path(st.__file__).parent / "static" / "index.html"
-
-
-# soup = BeautifulSoup(index_path.read_text(), features="lxml")
-# if not soup.find(id='custom-js'):
-#     script_tag = soup.new_tag("script", id='custom-js')
-#     script_tag.string = GA_JS
-#     soup.head.append(script_tag)
-#     index_path.write_text(str(soup))
-
-
-import streamlit.components.v1 as components
-
-components.html("""
-<script>
-
-var aTags = document.getElementsByTagName("a");
-var searchText = "Hello World!";
-var found;
-
-for (var i = 0; i < aTags.length; i++) {
-  if (aTags[i].textContent == searchText) {
-    found = aTags[i];
-    break;
-  }
-}
-
-
-    alert(found);
-</script>
-""")
-
-
-
-# def new_img(im_file):
-#     global im, fig, ax, coords, ix, iy, ax, cid
-#     im = np.array(Image.open(im_file))
-#     fig = plt.figure(figsize=[img_size,img_size])
-#     ax = fig.add_subplot(111)
-#     ax.imshow(im)
-#     coords = []
-#     def onclick(event):
-#         global ix, iy, ax
-#         ix, iy = event.xdata, event.ydata
-#         global coords
-#         coords.append((ix, iy))
-#         point_list = ['StickerClose CableFar','StickerFar CableFar','StickerFar CableClose','StickerClose CableClose', 'Coaxial', 'Fiber']
-#         ax.scatter(ix,iy, s=20, label=point_list[len(coords)-1])
-#         plt.legend(bbox_to_anchor=(1.1, 1.0))
-#         if len(coords) == 6:
-#             fig.canvas.mpl_disconnect(cid)
-#         return coords
-#     cid = fig.canvas.mpl_connect('button_press_event', onclick)
-#     #st.plotly_chart(fig)
-#     st.write(fig)
-
-# f = st.sidebar.file_uploader('File uploader')
-
-#if f is not None:
-#  new_img(f)
+if img_file:
+    img = Image.open(img_file)
+    if not realtime_update:
+        st.write("Double click to save crop")
+    # Get a cropped image from the frontend
+    cropped_img = st_cropper(img, realtime_update=realtime_update, box_color=box_color,
+                                aspect_ratio=aspect_ratio)
+    
+    # Manipulate cropped image at will
+    st.write("Preview")
+    _ = cropped_img.thumbnail((150,150))
+    st.image(cropped_img)

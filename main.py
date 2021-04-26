@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 import pathlib
 
 #"""Add this in your streamlit app.py"""
-GA_JS = """Here is some JavaScript"""
+GA_JS = """alert("Hello! I am an alert box!!");"""
 
 # Insert the script in the head tag of the static template inside your virtual environement
 index_path = pathlib.Path(st.__file__).parent / "static" / "index.html"

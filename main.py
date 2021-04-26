@@ -31,6 +31,7 @@ def new_img(im_file):
         return coords
     cid = fig.canvas.mpl_connect('button_press_event', onclick)
     #st.plotly_chart(fig)
+    st.write(fig)
 
 f = st.sidebar.file_uploader('File uploader')
 

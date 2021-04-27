@@ -4,17 +4,33 @@ from streamlit_labelstudio import st_labelstudio
 
 st.set_page_config(layout='wide')
 
-config = """
-      <View>
-        <View style="padding: 25px; box-shadow: 2px 2px 8px #AAA;">
-          <Image name="img" value="$image" width="100%" maxWidth="100%" brightnessControl="true" contrastControl="true" zoomControl="true" rotateControl="true"></Image>
-        </View>
-        <RectangleLabels name="tag" toName="img">
-          <Label value="Hello"></Label>
-          <Label value="Moon"></Label>
-        </RectangleLabels>
-      </View>
-    """
+# config = """
+#       <View>
+#         <View style="padding: 25px; box-shadow: 2px 2px 8px #AAA;">
+#           <Image name="img" value="$image" width="100%" maxWidth="100%" brightnessControl="true" contrastControl="true" zoomControl="true" rotateControl="true"></Image>
+#         </View>
+#         <RectangleLabels name="tag" toName="img">
+#           <Label value="Hello"></Label>
+#           <Label value="Moon"></Label>
+#         </RectangleLabels>
+#       </View>
+#     """
+
+
+config = """<View>
+
+  <Header value="Select label and start to click on image"/>
+  <Image name="image" value="$image"/>
+
+  <PolygonLabels name="label" toName="image"
+                 strokeWidth="3" pointSize="small"
+                 opacity="0.9">
+    <Label value="Airplane" background="red"/>
+    <Label value="Car" background="blue"/>
+  </PolygonLabels>
+
+</View>
+"""    
 
 interfaces = [
   "panel",
@@ -32,6 +48,8 @@ user = {
   'firstName': "James",
   'lastName': "Dean"
 },
+
+user={}
 
 task = {
   'completions': [],

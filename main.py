@@ -42,8 +42,8 @@ def bounding_box():
             <Image name="img" value="$image" width="100%" maxWidth="100%" brightnessControl="true" contrastControl="true" zoomControl="true" rotateControl="true"></Image>
           </View>
           <RectangleLabels name="tag" toName="img">
-            <Label value="Hello"></Label>
-            <Label value="Moon"></Label>
+            <Label value="Normal" background="green"></Label>
+            <Label value="Defective" background="red"></Label>
           </RectangleLabels>
         </View>
       """

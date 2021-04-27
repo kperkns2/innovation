@@ -8,7 +8,7 @@ st.set_page_config(layout='wide')
 def polygon_segmentation():
   config = """<View>
     <Header value="Select label and start to click on image"/>
-    <Image name="image" value="$image"/>
+    <Image name="image" value="$image" zoomControl="true" rotateControl="true"/>
 
     <PolygonLabels name="label" toName="image"
                   strokeWidth="3" pointSize="small"
@@ -53,16 +53,16 @@ def bounding_box():
     "update",
     "controls",
     "side-column",
-    "completions:menu",
-    "completions:add-new",
-    "completions:delete",
-    "predictions:menu",
+    #"completions:menu",
+    #"completions:add-new",
+    #"completions:delete",
+    #"predictions:menu",
   ],
 
   user = {
-    'pk': 1,
-    'firstName': "James",
-    'lastName': "Dean"
+    #'pk': 1,
+    #'firstName': "James",
+    #'lastName': "Dean"
   },
 
   task = {
@@ -70,7 +70,7 @@ def bounding_box():
     'predictions': [],
     'id': 1,
     'data': {
-      'image': "https://htx-misc.s3.amazonaws.com/opensource/label-studio/examples/images/nick-owuor-astro-nic-visuals-wDifg5xc9Z4-unsplash.jpg"
+      'image': "https://www.lenovo.com/medias/lenovo-data-center-server-rack-thinksystem-sr665-subseries-gallery-4.jpg?context=bWFzdGVyfHJvb3R8MTQyMzQ5fGltYWdlL2pwZWd8aDA3L2gwNi8xMDg3OTYxNDY0ODM1MC5qcGd8NTEwZDAxNWI1ODYyOGNkZDE1OTEzZGNkNDI2YTk2OTJkNWY4NzNjYzMwMjc0YTg3MDEwNmE0ZDM3YWY1MzJhZg"
     }
   }
 

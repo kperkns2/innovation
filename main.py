@@ -1,31 +1,54 @@
 
 import streamlit as st
-from streamlit_cropper import st_cropper
-from PIL import Image
-st.set_option('deprecation.showfileUploaderEncoding', False)
-box_color = '#0000FF'
-# Upload an image and set some options for demo purposes
-st.header("Cropper Demo")
-img_file = st.sidebar.file_uploader(label='Upload a file', type=['png', 'jpg'])
-realtime_update = st.sidebar.checkbox(label="Update in Real Time", value=True)
-#box_color = st.sidebar.beta_color_picker(label="Box Color", value='#0000FF')
-aspect_choice = st.sidebar.radio(label="Aspect Ratio", options=["1:1", "16:9", "4:3", "2:3", "Free"])
-aspect_dict = {"1:1": (1,1),
-                "16:9": (16,9),
-                "4:3": (4,3),
-                "2:3": (2,3),
-                "Free": None}
-aspect_ratio = aspect_dict[aspect_choice]
+from streamlit_labelstudio import st_labelstudio
 
-if img_file:
-    img = Image.open(img_file)
-    if not realtime_update:
-        st.write("Double click to save crop")
-    # Get a cropped image from the frontend
-    cropped_img = st_cropper(img, realtime_update=realtime_update, box_color=box_color,
-                                aspect_ratio=aspect_ratio)
-    
-    # Manipulate cropped image at will
-    st.write("Preview")
-    _ = cropped_img.thumbnail((150,150))
-    st.image(cropped_img)
+st.set_page_config(layout='wide')
+
+config = """
+      <View>
+        <View style="padding: 25px; box-shadow: 2px 2px 8px #AAA;">
+          <Image name="img" value="$image" width="100%" maxWidth="100%" brightnessControl="true" contrastControl="true" zoomControl="true" rotateControl="true"></Image>
+        </View>
+        <RectangleLabels name="tag" toName="img">
+          <Label value="Hello"></Label>
+          <Label value="Moon"></Label>
+        </RectangleLabels>
+      </View>
+    """
+
+interfaces = [
+  "panel",
+  "update",
+  "controls",
+  "side-column",
+  "completions:menu",
+  "completions:add-new",
+  "completions:delete",
+  "predictions:menu",
+],
+
+user = {
+  'pk': 1,
+  'firstName': "James",
+  'lastName': "Dean"
+},
+
+task = {
+  'completions': [],
+  'predictions': [],
+  'id': 1,
+  'data': {
+    'image': "https://htx-misc.s3.amazonaws.com/opensource/label-studio/examples/images/nick-owuor-astro-nic-visuals-wDifg5xc9Z4-unsplash.jpg"
+  }
+}
+
+results_raw = st_labelstudio(config, interfaces, user, task)
+
+if results_raw is not None:
+  areas = [v for k, v in results_raw['areas'].items()]
+
+  results = []
+  for a in areas:
+    results.append({'id':a['id'], 'x':a['x'], 'y':a['y'], 'width':a['width'], 'height':a['height'], 'label':a['results'][0]['value']['rectanglelabels'][0]})
+
+  st.table(results)

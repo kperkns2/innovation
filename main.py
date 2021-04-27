@@ -32,15 +32,23 @@ config = """<View>
 </View>
 """    
 
+# interfaces = [
+#   "panel",
+#   "update",
+#   "controls",
+#   "side-column",
+#   "completions:menu",
+#   "completions:add-new",
+#   "completions:delete",
+#   "predictions:menu",
+# ],
+
+
 interfaces = [
   "panel",
   "update",
   "controls",
-  "side-column",
-  "completions:menu",
-  "completions:add-new",
-  "completions:delete",
-  "predictions:menu",
+  "side-column"
 ],
 
 user = {

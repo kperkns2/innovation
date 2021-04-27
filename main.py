@@ -69,7 +69,9 @@ task = {
 }
 
 results_raw = st_labelstudio(config, interfaces, user, task)
-st.write(results)
+
+if results_raw is not None:
+  st.write(results_raw)
 # if results_raw is not None:
 #   areas = [v for k, v in results_raw['areas'].items()]
 

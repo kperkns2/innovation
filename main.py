@@ -96,7 +96,7 @@ task = {
 
 
 
-if st.sidebar.radio(["Bounding Box", "Polygon Segmentation"]) == "Bounding Box":
+if st.sidebar.radio("Label Type", ["Bounding Box", "Polygon Segmentation"]) == "Bounding Box":
   bounding_box()
 else:
   polygon_segmentation()

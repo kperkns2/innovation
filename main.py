@@ -72,11 +72,14 @@ results_raw = st_labelstudio(config, interfaces, user, task)
 
 if results_raw is not None:
   st.write(results_raw)
-# if results_raw is not None:
-#   areas = [v for k, v in results_raw['areas'].items()]
 
-#   results = []
-#   for a in areas:
-#     results.append({'id':a['id'], 'x':a['x'], 'y':a['y'], 'width':a['width'], 'height':a['height'], 'label':a['results'][0]['value']['rectanglelabels'][0]})
 
-#   st.table(results)
+
+if results_raw is not None:
+  areas = [v for k, v in results_raw['areas'].items()]
+
+  results = []
+  for a in areas:
+    results.append({'id':a['id'], 'x':[p['x']  for p in  a['points']], 'y':[p['y']  for p in  a['points']],  'label':a['results'][0]['value']['polygonlabels'][0]})
+
+  st.table(results)

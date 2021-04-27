@@ -4,18 +4,6 @@ from streamlit_labelstudio import st_labelstudio
 
 st.set_page_config(layout='wide')
 
-# config = """
-#       <View>
-#         <View style="padding: 25px; box-shadow: 2px 2px 8px #AAA;">
-#           <Image name="img" value="$image" width="100%" maxWidth="100%" brightnessControl="true" contrastControl="true" zoomControl="true" rotateControl="true"></Image>
-#         </View>
-#         <RectangleLabels name="tag" toName="img">
-#           <Label value="Hello"></Label>
-#           <Label value="Moon"></Label>
-#         </RectangleLabels>
-#       </View>
-#     """
-
 
 config = """<View>
 
@@ -25,23 +13,12 @@ config = """<View>
   <PolygonLabels name="label" toName="image"
                  strokeWidth="3" pointSize="small"
                  opacity="0.9">
-    <Label value="Airplane" background="red"/>
-    <Label value="Car" background="blue"/>
+    <Label value="Normal" background="green"/>
+    <Label value="Defective" background="red"/>
   </PolygonLabels>
 
 </View>
 """    
-
-# interfaces = [
-#   "panel",
-#   "update",
-#   "controls",
-#   "side-column",
-#   "completions:menu",
-#   "completions:add-new",
-#   "completions:delete",
-#   "predictions:menu",
-# ],
 
 
 interfaces = [
@@ -51,11 +28,6 @@ interfaces = [
   "side-column"
 ],
 
-user = {
-  'pk': 1,
-  'firstName': "James",
-  'lastName': "Dean"
-},
 
 user={}
 
@@ -64,15 +36,11 @@ task = {
   'predictions': [],
   'id': 1,
   'data': {
-    'image': "https://htx-misc.s3.amazonaws.com/opensource/label-studio/examples/images/nick-owuor-astro-nic-visuals-wDifg5xc9Z4-unsplash.jpg"
+    'image': "https://www.lenovo.com/medias/lenovo-data-center-server-rack-thinksystem-sr665-subseries-gallery-4.jpg?context=bWFzdGVyfHJvb3R8MTQyMzQ5fGltYWdlL2pwZWd8aDA3L2gwNi8xMDg3OTYxNDY0ODM1MC5qcGd8NTEwZDAxNWI1ODYyOGNkZDE1OTEzZGNkNDI2YTk2OTJkNWY4NzNjYzMwMjc0YTg3MDEwNmE0ZDM3YWY1MzJhZg"
   }
 }
 
 results_raw = st_labelstudio(config, interfaces, user, task)
-
-if results_raw is not None:
-  st.write(results_raw)
-
 
 
 if results_raw is not None:

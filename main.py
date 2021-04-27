@@ -25,6 +25,15 @@ def polygon_segmentation():
     "side-column"
   ],
   user={}
+  task = {
+  'completions': [],
+  'predictions': [],
+  'id': 1,
+  'data': {
+    'image': "https://images-na.ssl-images-amazon.com/images/I/71jvPp55JeL._SL1500_.jpg"
+  }
+}
+
   results_raw = st_labelstudio(config, interfaces, user, task)
   if results_raw is not None:
     areas = [v for k, v in results_raw['areas'].items()]
@@ -85,14 +94,6 @@ def bounding_box():
 
     st.table(results)  
 
-task = {
-  'completions': [],
-  'predictions': [],
-  'id': 1,
-  'data': {
-    'image': "https://www.lenovo.com/medias/lenovo-data-center-server-rack-thinksystem-sr665-subseries-gallery-4.jpg?context=bWFzdGVyfHJvb3R8MTQyMzQ5fGltYWdlL2pwZWd8aDA3L2gwNi8xMDg3OTYxNDY0ODM1MC5qcGd8NTEwZDAxNWI1ODYyOGNkZDE1OTEzZGNkNDI2YTk2OTJkNWY4NzNjYzMwMjc0YTg3MDEwNmE0ZDM3YWY1MzJhZg"
-  }
-}
 
 
 
